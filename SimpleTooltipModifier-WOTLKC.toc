@@ -1,0 +1,8 @@
+## Interface: 30400
+## Title: SimpleTooltipModifier
+## Author: Karikiomy
+## Version: 1.0.0
+## Notes: Random notes for this addon.
+
+Config.lua
+SimpleTooltipModifier.lua
