@@ -1,8 +1,0 @@
-## Interface: 100002
-## Title: AddonName
-## Author: Karikiomy
-## Version: 1.0.0
-## Notes: Random notes for this addon.
-
-Config.lua
-AddonName.lua
