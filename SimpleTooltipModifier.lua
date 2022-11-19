@@ -11,3 +11,6 @@
 local _, addonTable = ...
 local _c = addonTable.config
 local db = {} -- local database
+
+DevTools_Dump({(Enum.TooltipDataType})
+--TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, onTooltipSetUnit)
