@@ -5,4 +5,4 @@
 ## Notes: Random notes for this addon.
 
 Config.lua
-AddonName.lua
+SimpleTooltipModifier.lua
