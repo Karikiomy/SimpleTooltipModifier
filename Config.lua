@@ -8,5 +8,10 @@
 local _, addonTable = ...
 
 addonTable.config = {
-    property = true
+    showIds = true,
+    showUnitHealth = true,
+    showCreatureUptime = true,
+    attachToCursor = true,
+    attachToCursorAlt = false,
+    detachToCursorInCombat = true
 }

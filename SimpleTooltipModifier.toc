@@ -1,8 +1,8 @@
 ## Interface: 100002
-## Title: AddonName
+## Title: SimpleTooltipModifier
 ## Author: Karikiomy
 ## Version: 1.0.0
-## Notes: Random notes for this addon.
+## Notes: Simple tooltip addon updated for Dragonflight
 
 Config.lua
 SimpleTooltipModifier.lua
