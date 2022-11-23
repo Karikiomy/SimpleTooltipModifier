@@ -9,14 +9,14 @@
 ]]
 
 local _, addonTable = ...
-local _c = addonTable.config
+
 local db = {} -- local database
 
 --Tooltip Set Aura
 function onTooltipSetAura(tooltip, data) 
     if tooltip == GameTooltip then
         --DevTools_Dump({data})
-        if _c.showIds then
+        if SimpleTooltipModifierConfig.showIds then
             tooltip:AddLine("ID: " .. data.id)
         end
     end
@@ -55,10 +55,10 @@ function onTooltipSetUnit(tooltip, data)
         -- unitType => player/creature
         if unitType == "creature" then
             local creatureId = select(6, strsplit("-", data.guid))
-            if _c.showIds then
+            if SimpleTooltipModifierConfig.showIds then
                 tooltip:AddLine("ID: " .. creatureId)
             end
-            if _c.showCreatureUptime then
+            if SimpleTooltipModifierConfig.showCreatureUptime then
                 local id = tonumber(strsub(data.guid, -6), 16)
                 local serverTime = GetServerTime()
                 local spawnTime  = ( serverTime - (serverTime % 2^23) ) + bit.band(id, 0x7fffff)
@@ -73,8 +73,8 @@ function onTooltipSetUnit(tooltip, data)
             colorizeLinesTooltipPlayer(tooltip)
         end
         --HP Bar config
-        --DevTools_Dump(_c.showUnitHealth)
-        if(_c.showUnitHealth == false) then
+        --DevTools_Dump(SimpleTooltipModifierConfig.showUnitHealth)
+        if(SimpleTooltipModifierConfig.showUnitHealth == false) then
             GameTooltipStatusBar:Hide();
         else
             GameTooltipStatusBar:Hide();
@@ -94,7 +94,7 @@ TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, onTooltipSetU
 --Tooltip Set Spell
 function onTooltipSetSpell(tooltip,data)
     if(tooltip== GameTooltip) then
-        if(_c.showIds) then
+        if(SimpleTooltipModifierConfig.showIds) then
             local idSpell = select(2, tooltip:GetSpell())
             tooltip:AddLine("Id: " .. idSpell)
         end
@@ -109,9 +109,9 @@ local function setDefaultAnchor(self, parent)
     self:SetPoint('BOTTOMRIGHT', UIParent, 'BOTTOMRIGHT', -CONTAINER_OFFSET_X - 13, CONTAINER_OFFSET_Y)
 
     -- In this case, SetOwner() must be below SetPoint()
-    if _c.attachToCursor
-        and ( ( _c.attachToCursorAlt and GetMouseFocus() == WorldFrame ) or not _c.attachToCursorAlt )
-        and ( ( _c.detachToCursorInCombat and not InCombatLockdown() ) or not _c.detachToCursorInCombat ) then
+    if SimpleTooltipModifierConfig.attachToCursor
+        and ( ( SimpleTooltipModifierConfig.attachToCursorAlt and GetMouseFocus() == WorldFrame ) or not SimpleTooltipModifierConfig.attachToCursorAlt )
+        and ( ( SimpleTooltipModifierConfig.detachToCursorInCombat and not InCombatLockdown() ) or not SimpleTooltipModifierConfig.detachToCursorInCombat ) then
 
         self:SetOwner(parent, 'ANCHOR_CURSOR_LEFT' or 'ANCHOR_CURSOR')
     end
@@ -119,8 +119,7 @@ end
 hooksecurefunc('GameTooltip_SetDefaultAnchor', setDefaultAnchor)
 
 local function onStatusBarValueChanged(self)
-    -- Hotfix to prevent the Status bar to show as Green during few ms
-    GameTooltipStatusBar:Hide();
+    
 end
 
 GameTooltipStatusBar:HookScript('OnValueChanged', onStatusBarValueChanged)

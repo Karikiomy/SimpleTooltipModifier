@@ -3,6 +3,8 @@
 ## Author: Karikiomy
 ## Version: 1.0.0
 ## Notes: Simple tooltip addon updated for Dragonflight
+## SavedVariables:SimpleTooltipModifierConfig
 
+Init.lua
 Config.lua
 SimpleTooltipModifier.lua
