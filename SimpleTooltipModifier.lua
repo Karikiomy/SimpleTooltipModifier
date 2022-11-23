@@ -53,7 +53,7 @@ function onTooltipSetUnit(tooltip, data)
     if tooltip == GameTooltip then
         local unitType = (data.guid):match('^(.-)%-'):lower()
         -- unitType => player/creature
-        if unitType == "creature" then
+        if unitType == "creature" or unitType == "vehicle" then
             local creatureId = select(6, strsplit("-", data.guid))
             if SimpleTooltipModifierConfig.showIds then
                 tooltip:AddLine("ID: " .. creatureId)
@@ -119,7 +119,7 @@ end
 hooksecurefunc('GameTooltip_SetDefaultAnchor', setDefaultAnchor)
 
 local function onStatusBarValueChanged(self)
-    
+
 end
 
 GameTooltipStatusBar:HookScript('OnValueChanged', onStatusBarValueChanged)
