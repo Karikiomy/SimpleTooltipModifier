@@ -15,7 +15,6 @@ local db = {} -- local database
 --Tooltip Set Aura
 function onTooltipSetAura(tooltip, data) 
     if tooltip == GameTooltip then
-        --DevTools_Dump({data})
         if SimpleTooltipModifierConfig.showIds then
             tooltip:AddLine("ID: " .. data.id)
         end
@@ -25,28 +24,38 @@ TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.UnitAura, onTooltip
 
 --Tooltip Set Unit
 function colorizeLinesTooltipPlayer(tooltip)
-    local unit = select(2, tooltip:GetUnit())
-    local unitClassColor = RAID_CLASS_COLORS[ select(2, UnitClass(unit))]
-    local unitHaveGuild = not (GetGuildInfo(unit) == nil)
-    local unitFactionEn,unitFactionLocal = UnitFactionGroup(unit)
-    for i = 1, tooltip:NumLines() do
-        local line = _G[tooltip:GetName() .. 'TextLeft' .. i]
-        local lineText = line:GetText()
+    local _,unit = tooltip:GetUnit()
+    local tooltipCorrect = false
+    if(unit)then
+        local _,unitClassVar = UnitClass(unit)
+        if(unitClassVar) then
+            tooltipCorrect = true;
+            local unitClassColor = RAID_CLASS_COLORS[ select(2, UnitClass(unit))]
+            local unitHaveGuild = not (GetGuildInfo(unit) == nil)
+            local unitFactionEn,unitFactionLocal = UnitFactionGroup(unit)
+            for i = 1, tooltip:NumLines() do
+                local line = _G[tooltip:GetName() .. 'TextLeft' .. i]
+                local lineText = line:GetText()
 
-        -- Name line
-        if i == 1 then
-            line:SetText( '|c' .. unitClassColor.colorStr .. lineText .. '|r' )
-        -- Guild line
-        elseif i == 2 and unitHaveGuild then
-            line:SetTextColor( 0.251, 1, 0.251 ) -- ChatTypeInfo['GUILD']
-        -- Faction line
-        elseif lineText == unitFactionLocal then
-            if(unitFactionEn == "Horde") then
-                line:SetTextColor(0.7,0,0)
-            elseif(unitFactionEn == "Alliance") then
-                line:SetTextColor(0,0.4,1)
+                -- Name line
+                if i == 1 then
+                    line:SetText( '|c' .. unitClassColor.colorStr .. lineText .. '|r' )
+                -- Guild line
+                elseif i == 2 and unitHaveGuild then
+                    line:SetTextColor( 0.251, 1, 0.251 ) -- ChatTypeInfo['GUILD']
+                -- Faction line
+                elseif lineText == unitFactionLocal then
+                    if(unitFactionEn == "Horde") then
+                        line:SetTextColor(0.7,0,0)
+                    elseif(unitFactionEn == "Alliance") then
+                        line:SetTextColor(0,0.4,1)
+                    end
+                end
             end
         end
+    end
+    if(tooltipCorrect == false)then
+        tooltip:Hide()
     end
 end
 function onTooltipSetUnit(tooltip, data) 
@@ -73,15 +82,25 @@ function onTooltipSetUnit(tooltip, data)
             colorizeLinesTooltipPlayer(tooltip)
         end
         --HP Bar config
-        --DevTools_Dump(SimpleTooltipModifierConfig.showUnitHealth)
         if(SimpleTooltipModifierConfig.showUnitHealth == false) then
             GameTooltipStatusBar:Hide();
         else
             GameTooltipStatusBar:Hide();
             if unitType == "player" then
-                local unit = select(2, tooltip:GetUnit())
-                local unitClassColor = RAID_CLASS_COLORS[ select(2, UnitClass(unit))]
-                GameTooltipStatusBar:SetStatusBarColor( unitClassColor.r, unitClassColor.g, unitClassColor.b )
+                local _,unit = tooltip:GetUnit()
+                local tooltipCorrect = false
+                if(unit)then
+                    local _,unitClassVar = UnitClass(unit)
+                    if(unitClassVar) then
+                        tooltipCorrect = true
+                        local unit = select(2, tooltip:GetUnit())
+                        local unitClassColor = RAID_CLASS_COLORS[ select(2, UnitClass(unit))]
+                        GameTooltipStatusBar:SetStatusBarColor( unitClassColor.r, unitClassColor.g, unitClassColor.b )
+                    end
+                end
+                if(tooltipCorrect == false)then
+                    tooltip:Hide()
+                end
             else
                 GameTooltipStatusBar:SetStatusBarColor( 0, 1, 0, 1 )
             end
@@ -124,6 +143,3 @@ end
 
 GameTooltipStatusBar:HookScript('OnValueChanged', onStatusBarValueChanged)
 --DevTools_Dump({Enum.TooltipDataType})
---Unit
---Spell
---UnitAura
