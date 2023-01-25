@@ -1,4 +1,4 @@
-## Interface: 100002
+## Interface: 100005
 ## Title: SimpleTooltipModifier
 ## Author: Karikiomy
 ## Version: 1.1.1
