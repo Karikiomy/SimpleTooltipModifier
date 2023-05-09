@@ -85,29 +85,9 @@ function onTooltipSetUnit(tooltip, data)
         if(SimpleTooltipModifierConfig.showUnitHealth == false) then
             GameTooltipStatusBar:Hide();
         else
-            GameTooltipStatusBar:Hide();
-            if unitType == "player" then
-                local _,unit = tooltip:GetUnit()
-                local tooltipCorrect = false
-                if(unit)then
-                    local _,unitClassVar = UnitClass(unit)
-                    if(unitClassVar) then
-                        tooltipCorrect = true
-                        GameTooltip:HookScript("OnUpdate", function()
-                            if UnitPlayerControlled("mouseover") then
-                                local _, unitClass = UnitClass("mouseover")
-                                local r,g,b = GetClassColor(unitClass)
-                                GameTooltipStatusBarTexture:SetVertexColor(r,g,b)
-                            end
-                        end)
-                    end
-                end
-                if(tooltipCorrect == false)then
-                    tooltip:Hide()
-                end
-            else
-                GameTooltipStatusBar:SetStatusBarColor( 0, 1, 0, 1 )
-            end
+            local _, unitClass = UnitClass("mouseover")
+            local r,g,b = GetClassColor(unitClass)
+            GameTooltipStatusBarTexture:SetVertexColor(r,g,b)
             GameTooltipStatusBar:Show();
         end
     end
