@@ -93,9 +93,13 @@ function onTooltipSetUnit(tooltip, data)
                     local _,unitClassVar = UnitClass(unit)
                     if(unitClassVar) then
                         tooltipCorrect = true
-                        local unit = select(2, tooltip:GetUnit())
-                        local unitClassColor = RAID_CLASS_COLORS[ select(2, UnitClass(unit))]
-                        GameTooltipStatusBar:SetStatusBarColor( unitClassColor.r, unitClassColor.g, unitClassColor.b )
+                        GameTooltip:HookScript("OnUpdate", function()
+                            if UnitPlayerControlled("mouseover") then
+                                local _, unitClass = UnitClass("mouseover")
+                                local r,g,b = GetClassColor(unitClass)
+                                GameTooltipStatusBarTexture:SetVertexColor(r,g,b)
+                            end
+                        end)
                     end
                 end
                 if(tooltipCorrect == false)then
