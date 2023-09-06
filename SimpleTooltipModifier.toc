@@ -1,7 +1,7 @@
 ## Interface: 100107
 ## Title: SimpleTooltipModifier
 ## Author: Karikiomy
-## Version: 1.1.7
+## Version: 1.1.8
 ## Notes: Simple tooltip addon updated for Dragonflight
 ## SavedVariables:SimpleTooltipModifierConfig
 
