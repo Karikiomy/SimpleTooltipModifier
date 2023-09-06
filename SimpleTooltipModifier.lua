@@ -107,9 +107,7 @@ TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Spell, onTooltipSet
 
 -- Tooltip Set Anchor 
 local function setDefaultAnchor(self, parent)
-    self:SetOwner(parent, 'ANCHOR_NONE')
-    self:ClearAllPoints()
-    self:SetPoint('BOTTOMRIGHT', UIParent, 'BOTTOMRIGHT', -CONTAINER_OFFSET_X - 13, CONTAINER_OFFSET_Y)
+    self:SetOwner(parent, 'ANCHOR_PRESERVE')
 
     -- In this case, SetOwner() must be below SetPoint()
     if SimpleTooltipModifierConfig.attachToCursor
