@@ -95,4 +95,10 @@ panel:SetScript("OnShow", function(frame)
     end
 	frame:SetScript("OnShow", nil)
 end)
-InterfaceOptions_AddCategory(panel)
+if InterfaceOptions_AddCategory then
+	InterfaceOptions_AddCategory(panel)
+else
+	local category, layout = Settings.RegisterCanvasLayoutCategory(panel, panel.name);
+	Settings.RegisterAddOnCategory(category);
+	addonTable.settingsCategory = category
+end
