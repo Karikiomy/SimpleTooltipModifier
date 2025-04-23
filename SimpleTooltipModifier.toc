@@ -1,7 +1,7 @@
-## Interface: 110100
+## Interface: 110105
 ## Title: SimpleTooltipModifier
 ## Author: Karikiomy
-## Version: 1.2.8
+## Version: 1.2.9
 ## Notes: Simple tooltip addon updated for The War Within
 ## SavedVariables:SimpleTooltipModifierConfig
 
