@@ -59,7 +59,8 @@ function colorizeLinesTooltipPlayer(tooltip)
     end
 end
 function onTooltipSetUnit(tooltip, data) 
-    if tooltip == GameTooltip then
+    local isGuidUsable = pcall(function() return data.guid:match("x") end)
+    if tooltip == GameTooltip and isGuidUsable then
         local unitType = (data.guid):match('^(.-)%-'):lower()
         -- unitType => player/creature
         if unitType == "creature" or unitType == "vehicle" then

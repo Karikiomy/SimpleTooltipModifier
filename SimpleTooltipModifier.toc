@@ -1,7 +1,7 @@
 ## Interface: 120000
 ## Title: SimpleTooltipModifier
 ## Author: Karikiomy
-## Version: 1.2.10
+## Version: 1.2.11
 ## Notes: Simple tooltip addon updated for The War Within
 ## SavedVariables:SimpleTooltipModifierConfig
 
