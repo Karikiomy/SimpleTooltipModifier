@@ -1,8 +1,8 @@
-## Interface: 120000
+## Interface: 120001
 ## Title: SimpleTooltipModifier
 ## Author: Karikiomy
-## Version: 1.2.11
-## Notes: Simple tooltip addon updated for The War Within
+## Version: 1.2.12
+## Notes: Simple tooltip addon updated for Midnight
 ## SavedVariables:SimpleTooltipModifierConfig
 
 Init.lua
