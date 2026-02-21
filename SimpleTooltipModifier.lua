@@ -88,11 +88,21 @@ function onTooltipSetUnit(tooltip, data)
         else
             local _, unitClass = UnitClass("mouseover")
             local r,g,b = GetClassColor(unitClass)
-            GameTooltipStatusBarTexture:SetVertexColor(r,g,b)
+	        GameTooltipStatusBar:GetStatusBarTexture():SetTexture(nil)
+	        GameTooltipStatusBar:GetStatusBarTexture():SetColorTexture(r,g , b,1)
             GameTooltipStatusBar:Show();
         end
     end
 end
+hooksecurefunc(GameTooltipStatusBar, "SetStatusBarColor", function(self) 
+		    local _, unitClass = UnitClass("mouseover")
+            local r,g,b = GetClassColor(unitClass)
+	        local tex = self:GetStatusBarTexture()
+            tex:SetTexture(nil)
+            tex:SetVertexColor(1, 1, 1, 1)
+            tex:SetBlendMode("DISABLE")
+            tex:SetColorTexture(r, g, b,1)
+end)
 TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, onTooltipSetUnit)
 
 --Tooltip Set Spell
