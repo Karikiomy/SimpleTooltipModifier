@@ -1,7 +1,7 @@
 ## Interface: 120001
 ## Title: SimpleTooltipModifier
 ## Author: Karikiomy
-## Version: 1.2.13
+## Version: 1.3.3
 ## Notes: Simple tooltip addon updated for Midnight
 ## SavedVariables:SimpleTooltipModifierConfig
 
