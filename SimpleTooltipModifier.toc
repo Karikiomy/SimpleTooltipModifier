@@ -5,6 +5,11 @@
 ## Notes: Simple tooltip addon updated for Midnight
 ## SavedVariables:SimpleTooltipModifierConfig
 
+Locale.lua
+
+locales\enUS.lua
+locales\frFR.lua
+
 Init.lua
 Config.lua
 SimpleTooltipModifier.lua

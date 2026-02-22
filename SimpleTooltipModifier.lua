@@ -12,11 +12,13 @@ local _, addonTable = ...
 
 local db = {} -- local database
 
+local lightBlue = "FF1E90FF"
+
 --Tooltip Set Aura
 function onTooltipSetAura(tooltip, data) 
     if tooltip == GameTooltip then
         if SimpleTooltipModifierConfig.showIds then
-            tooltip:AddLine("ID: " .. data.id)
+            tooltip:AddLine("|c" .. lightBlue .. SimpleTooltipModifier_L["ID"]..":|r " .. data.id)
         end
     end
 end
@@ -66,7 +68,7 @@ function onTooltipSetUnit(tooltip, data)
         if unitType == "creature" or unitType == "vehicle" then
             local creatureId = select(6, strsplit("-", data.guid))
             if SimpleTooltipModifierConfig.showIds then
-                tooltip:AddLine("ID: " .. creatureId)
+                tooltip:AddLine("|c" .. lightBlue .. SimpleTooltipModifier_L["ID"]..":|r " .. creatureId)
             end
             if SimpleTooltipModifierConfig.showCreatureUptime then
                 local id = tonumber(strsub(data.guid, -6), 16)
@@ -76,7 +78,7 @@ function onTooltipSetUnit(tooltip, data)
                 if spawnTime > serverTime then
                     spawnTime = spawnTime - ((2^23) - 1)
                 end
-                tooltip:AddLine("Alive: " .. SecondsToTime(serverTime-spawnTime).." ("..date("%H:%M, %d.%m", spawnTime)..")")
+                tooltip:AddLine("|c" .. lightBlue .. SimpleTooltipModifier_L["APPEARED_SINCE"]..":|r " .. SecondsToTime(serverTime-spawnTime).." ("..date("%H:%M, %d.%m", spawnTime)..")")
             end
         end
         if unitType == "player" then
@@ -110,7 +112,7 @@ function onTooltipSetSpell(tooltip,data)
     if(tooltip== GameTooltip) then
         if(SimpleTooltipModifierConfig.showIds) then
             local idSpell = select(2, tooltip:GetSpell())
-            tooltip:AddLine("Id: " .. idSpell)
+            tooltip:AddLine("|c" .. lightBlue .. SimpleTooltipModifier_L["ID"]..":|r " .. idSpell)
         end
     end
 end

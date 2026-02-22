@@ -37,8 +37,8 @@ panel:SetScript("OnShow", function(frame)
 
     -- Show Id Checkbox
 	local showIdCheckbox = newCheckbox(
-		"Show ids",
-		"Show ids (Spells and Auras)",
+		SimpleTooltipModifier_L["SHOW_ID_SHORT"],
+		SimpleTooltipModifier_L["SHOW_ID_LONG"],
 		function(self, value) 
             SimpleTooltipModifierConfig.showIds = value
         end)
@@ -47,8 +47,8 @@ panel:SetScript("OnShow", function(frame)
 
     -- Show Unit Health Checkbox
     local showUnitHealth = newCheckbox(
-		"Show unit health",
-		"Show unit health in tooltips",
+		SimpleTooltipModifier_L["SHOW_HEALTH_SHORT"],
+		SimpleTooltipModifier_L["SHOW_HEALTH_LONG"],
 		function(self, value) 
             SimpleTooltipModifierConfig.showUnitHealth = value
         end)
@@ -57,8 +57,8 @@ panel:SetScript("OnShow", function(frame)
 
     -- Show Alive uptime Checkbox
     local showAliveUptime = newCheckbox(
-		"Show unit alive uptime",
-		"Show unit alive uptime",
+		SimpleTooltipModifier_L["SHOW_UNIT_ALIVE_TIME_SHORT"],
+		SimpleTooltipModifier_L["SHOW_UNIT_ALIVE_TIME_LONG"],
 		function(self, value) 
             SimpleTooltipModifierConfig.showCreatureUptime = value
         end)
@@ -67,8 +67,8 @@ panel:SetScript("OnShow", function(frame)
 
     -- Attach tooltip to cursor
     local attachTooltipToCursor = newCheckbox(
-		"Attach tooltip to cursor",
-		"Attach tooltip to cursor",
+		SimpleTooltipModifier_L["ATTACH_TO_CURSOR_SHORT"],
+		SimpleTooltipModifier_L["ATTACH_TO_CURSOR_LONG"],
 		function(self, value) 
             SimpleTooltipModifierConfig.attachToCursor = value
             --disableDetachTooltipByValue()
@@ -77,8 +77,8 @@ panel:SetScript("OnShow", function(frame)
         attachTooltipToCursor:SetPoint("TOPLEFT", showAliveUptime, "BOTTOMLEFT", 0, -8)
     -- Detach tooltip to cursor in Battle
     local detachTooltipInBattle = newCheckbox(
-		"Detach tooltip in battle",
-		"Detach tooltip in battle",
+		SimpleTooltipModifier_L["DETACH_IN_BATTLE_SHORT"],
+		SimpleTooltipModifier_L["DETACH_IN_BATTLE_LONG"],
 		function(self, value) 
             SimpleTooltipModifierConfig.detachToCursorInCombat = value
         end)
