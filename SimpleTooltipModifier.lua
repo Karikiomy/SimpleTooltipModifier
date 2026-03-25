@@ -38,20 +38,12 @@ function colorizeLinesTooltipPlayer(tooltip)
             for i = 1, tooltip:NumLines() do
                 local line = _G[tooltip:GetName() .. 'TextLeft' .. i]
                 local lineText = line:GetText()
-
                 -- Name line
                 if i == 1 then
                     line:SetText( '|c' .. unitClassColor.colorStr .. lineText .. '|r' )
                 -- Guild line
                 elseif i == 2 and unitHaveGuild then
                     line:SetTextColor( 0.251, 1, 0.251 ) -- ChatTypeInfo['GUILD']
-                -- Faction line
-                elseif lineText == unitFactionLocal then
-                    if(unitFactionEn == "Horde") then
-                        line:SetTextColor(0.7,0,0)
-                    elseif(unitFactionEn == "Alliance") then
-                        line:SetTextColor(0,0.4,1)
-                    end
                 end
             end
         end
